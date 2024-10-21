@@ -1,0 +1,17 @@
+datasheets
+ressources
+
+Etat recherches.pdf
+TIPE.gan
+TIPE.lyx
+TIPE.lyx~
+TIPE.pdf
+
+prog/__pycache__
+prog/.vscode
+prog/.micropico
+prog/test.ipynb
+prog/test.py
+
+lifi elec/lifi-backups
+lifi elec/fp-info-cache
