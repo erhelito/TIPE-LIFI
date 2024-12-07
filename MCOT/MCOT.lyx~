@@ -1,0 +1,270 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass extarticle
+\begin_preamble
+\usepackage{hyperref}   % pour les liens cliquables de la table des matières
+
+\usepackage[svgnames,dvipsnames]{xcolor}
+
+\makeatletter
+\@addtoreset{section}{part}   % reprendre à partir de 1 les sections des parties suivantes.
+\makeatother
+\end_preamble
+\options titlepage
+\use_default_options true
+\maintain_unincluded_children no
+\language french
+\language_package default
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3cm
+\topmargin 3cm
+\rightmargin 3cm
+\bottommargin 3cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\align center
+
+\series bold
+\size largest
+\bar under
+Étude de la communication par laser à grande distance
+\end_layout
+
+\begin_layout Standard
+Dans un monde où les informations circulent de plus en plus vite,
+ il est essentiel de développer des méthodes innovantes pour transmettre des données de manière efficace,
+ sécurisée et fiable.
+ C'est pourquoi j'ai choisi de réaliser un travail de recherche sur la communication par la lumière à grande distance à l'air libre (sans fibre optique),
+ en utilisant un laser comme moyen de transmission.
+ L'objectif de ce projet est de concevoir et de mettre en œuvre un système capable de transmettre des images ou un signal sonore entre deux bâtiments séparés d'une centaine de mètres,
+ en utilisant la lumière comme support de transmission.
+\end_layout
+
+\begin_layout Section*
+Positionnement thématique
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+PHYSIQUE (électronique),
+ PHYSIQUE (optique)
+\end_layout
+
+\begin_layout Section*
+Mots-clés
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Laser
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Filtrage
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+CAN
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Communication sans fil
+\end_layout
+
+\begin_layout Section*
+Bibliographie commentée
+\end_layout
+
+\begin_layout Section*
+Problématique retenue
+\end_layout
+
+\begin_layout Standard
+Peut-on utiliser la technologie laser pour communiquer sur de longues distances sans utilisation de fibre optique ?
+\end_layout
+
+\begin_layout Section*
+Objectifs du TIPE
+\end_layout
+
+\begin_layout Enumerate
+Concevoir un système d'émission de signal électronique via un signal optique
+\end_layout
+
+\begin_layout Enumerate
+Concevoir un système de réception du signal optique via signal électronique
+\end_layout
+
+\begin_layout Enumerate
+Réaliser un dispositif capable de communiquer à l'échelle de la dizaine de mètres
+\end_layout
+
+\begin_layout Enumerate
+Concevoir un système d'encodage de l'information efficace limitant la perte d'information
+\end_layout
+
+\begin_layout Enumerate
+Amélioration du système pour une utilisation à longue distance
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-7"
+
+\end_inset
+
+Louiza Hamada.
+ Conception d’une architecture supportant la technologie Li-Fi.
+ Réseaux et télécommunications [cs.NI].
+ Université de Haute Alsace - Mulhouse,
+ 2022.
+ Français.
+ NNT :
+ 2022MULH5026.
+ tel-03955897
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-8"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "https://www.photoniques.com/articles/photon/pdf/2017/03/photon201786p22.pdf"
+target "https://www.photoniques.com/articles/photon/pdf/2017/03/photon201786p22.pdf"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-17"
+
+\end_inset
+
+Technologie LiFi (Light Fidelity) par Luc CHASSAGNE,
+ professeur,
+ Laboratoire LISV EA4048,
+ université de Versailles Saint-Quentin,
+ Vélizy,
+ France
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-21"
+
+\end_inset
+
+Alin Cailean.
+ Etude et réalisation d’un système de communications par lumière visible (VLC/LiFi).
+ Application au domaine automobile.
+ Optique / photonique.
+ Université de Versailles Saint-Quentin en Yvelines,
+ 2014.
+ Français.
+ NNT :
+ tel-01156468
+\end_layout
+
+\end_body
+\end_document

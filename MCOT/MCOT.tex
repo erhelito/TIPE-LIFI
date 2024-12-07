@@ -1,0 +1,166 @@
+\documentclass[french,titlepage]{extarticle}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{luainputenc}
+\usepackage{geometry}
+\geometry{verbose,tmargin=3cm,bmargin=3cm,lmargin=3cm,rmargin=3cm}
+\usepackage{babel}
+\PassOptionsToPackage{normalem}{ulem}
+\usepackage{ulem}
+\usepackage[]
+ {hyperref}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{hyperref}   % pour les liens cliquables de la table des matières
+
+\usepackage[svgnames,dvipsnames]{xcolor}
+
+\makeatletter
+\@addtoreset{section}{part}   % reprendre à partir de 1 les sections des parties suivantes.
+\makeatother
+
+\makeatother
+
+\begin{document}
+\begin{center}
+{\LARGE\textbf{\uline{Étude de la communication par laser à grande
+distance}}}{\LARGE\par}
+\par\end{center}
+
+Dans un monde où les informations circulent de plus en plus vite,
+il est essentiel de développer des méthodes innovantes pour transmettre
+des données de manière efficace, sécurisée et fiable. C'est pourquoi
+j'ai choisi de réaliser un travail de recherche sur la communication
+par la lumière à grande distance à l'air libre (sans fibre optique),
+en utilisant un laser comme moyen de transmission. L'objectif de ce
+projet est de concevoir et de mettre en œuvre un système capable de
+transmettre des images ou un signal sonore entre deux bâtiments séparés
+d'une centaine de mètres, en utilisant la lumière comme support de
+transmission.
+
+\section*{Ancrage au thème}
+
+Conversion d'un signal électrique en signal lumineux et vice-versa,
+transmission dans l'atmosphère.
+
+\section*{Positionnement thématique}
+
+\emph{PHYSIQUE (électronique), PHYSIQUE (optique)}
+
+\section*{Mots-clés}
+\begin{itemize}
+\item \emph{Laser}
+\item \emph{Filtrage}
+\item \emph{CAN}
+\item \emph{Communication sans fil}
+\end{itemize}
+
+\section*{Bibliographie commentée}
+
+Les technologies de communication sans fil ont connu une évolution
+rapide ces dernières années, propulsées par l\textquoteright augmentation
+du nombre de dispositifs connectés et la nécessité de répondre à une
+demande croissante de données à haut débit. Face à la saturation des
+spectres radiofréquences, la technologie Light Fidelity (Li-Fi), qui
+repose sur l\textquoteright utilisation de la lumière visible pour
+la transmission de données, s\textquoteright impose comme une alternative
+prometteuse au Wi-Fi traditionnel. Contrairement aux réseaux sans
+fil basés sur les ondes radio, le Li-Fi exploite le spectre lumineux,
+offrant ainsi une capacité de transmission largement supérieure \cite{key-7}.
+
+Le Li-Fi repose sur des sources lumineuses telles que les diodes électroluminescentes
+(LED) ou des lasers pour la transmission de données, et utilise la
+modulation de lumière pour encoder l\textquoteright information. Cette
+technologie permet des vitesses de transmission pouvant atteindre
+jusqu\textquoteright à 1 Gb/s, et tire profit de la vaste bande passante
+disponible dans la lumière visible, estimée à 2600 fois plus grande
+que celle des ondes radio \cite{key-17}. De plus, contrairement aux
+technologies traditionnelles, le Li-Fi n\textquoteright interfère
+pas avec les dispositifs utilisant les radiofréquences, ce qui le
+rend particulièrement adapté à des environnements saturés ou à des
+situations nécessitant une faible interférence \cite{key-7}.
+
+En outre, cette technologie assure un niveau de sécurité accru, car
+la lumière visible ne traverse pas les murs et ne peut être captée
+qu\textquoteright à proximité de la source lumineuse, rendant ainsi
+les transmissions moins vulnérables aux interceptions à distance \cite{key-21}.
+
+Cependant, bien que le Li-Fi soit particulièrement adapté aux transmissions
+de données à courte portée (généralement de quelques mètres à quelques
+dizaines de mètres), il présente certaines limitations liées à la
+nécessité d\textquoteright une ligne de vue entre l\textquoteright émetteur
+et le récepteur. Cette contrainte limite son utilisation dans des
+environnements extérieurs ou dans des situations où des obstacles
+peuvent bloquer la transmission. À cet égard, la communication par
+laser, qui repose sur des principes similaires au Li-Fi, permet d\textquoteright élargir
+la portée des transmissions jusqu\textquoteright à des distances de
+100 mètres ou plus, tout en maintenant un haut débit de données \cite{key-17}.
+
+Dans les environnements à forte densité de trafic, comme les zones
+urbaines ou les autoroutes, la capacité de communication par laser
+à couvrir de longues distances sans interférer avec d\textquoteright autres
+systèmes sans fil est un atout majeur. En outre, le laser offre des
+possibilités uniques dans des applications telles que les communications
+entre véhicules, où la précision et la directionnalité de la transmission
+sont cruciales pour garantir la sécurité et la fiabilité des systèmes
+de transport intelligent \cite{key-21}.
+
+En conclusion, le Li-Fi et la communication par laser représentent
+des solutions de communication sans fil complémentaires, répondant
+aux défis de capacité, de sécurité et de gestion des interférences
+dans des environnements de plus en plus saturés. Grâce à l\textquoteright utilisation
+de l\textquoteright infrastructure lumineuse existante et aux avancées
+technologiques, ces technologies ouvrent la voie à de nouvelles applications
+dans des secteurs clés tels que la géolocalisation, la sécurité des
+transports, et la transmission de données à haut débit dans des espaces
+urbains. Leur adoption généralisée nécessitera néanmoins un effort
+concerté de la part des chercheurs et des industriels pour surmonter
+les obstacles techniques et normatifs encore présents.
+
+Dans l'objectif d'étudier la communication par laser et ses limites,
+nous réaliserons un dispositif capable d'émettre une information modulée
+à une vitesse de transmission satisfaisante, ainsi qu'un système en
+mesure de recevoir cette information à une distance de l'ordre de
+la centaine de mètres, tout en assurant la bonne qualité de l'information
+sur le lieu de réception.
+
+\section*{Problématique retenue}
+
+Peut-on utiliser la technologie laser pour communiquer sur de longues
+distances sans utilisation de fibre optique ?
+
+\section*{Objectifs du TIPE}
+\begin{enumerate}
+\item Concevoir un système d'émission de signal électronique via un signal
+optique
+\item Concevoir un système de réception du signal optique via signal électronique
+\item Réaliser un dispositif capable de communiquer à l'échelle de la dizaine
+de mètres
+\item Concevoir un système d'encodage de l'information efficace limitant
+la perte d'information
+\item Amélioration du système pour une utilisation à longue distance
+\end{enumerate}
+\begin{thebibliography}{1}
+\bibitem{key-7}Louiza Hamada. Conception d\textquoteright une architecture
+suintroductions :     Louiza hamada :         Ces derniers temps,
+le nombre de gadgets et d'applications reposant sur la communication
+sans fil a explosé, entraînant des transformations considérables dans
+le style de vie des gens. Pour gérer cette augmentation de connectivité,
+plusieurs techniques avancées sont prévues avec les normpportant la
+technologie Li-Fi. Réseaux et télécommunications {[}cs.NI{]}. Université
+de Haute Alsace - Mulhouse, 2022. Français. NNT : 2022MULH5026. tel-03955897
+
+\bibitem{key-8}\href{https://www.photoniques.com/articles/photon/pdf/2017/03/photon201786p22.pdf}{https://www.photoniques.com/articles/photon/pdf/2017/03/photon201786p22.pdf}
+
+\bibitem{key-17}Technologie LiFi (Light Fidelity) par Luc CHASSAGNE,
+professeur, Laboratoire LISV EA4048, université de Versailles Saint-Quentin,
+Vélizy, France
+
+\bibitem{key-21}Alin Cailean. Etude et réalisation d\textquoteright un
+système de communications par lumière visible (VLC/LiFi). Application
+au domaine automobile. Optique / photonique. Université de Versailles
+Saint-Quentin en Yvelines, 2014. Français. NNT : tel-01156468
+
+\end{thebibliography}
+
+\end{document}
