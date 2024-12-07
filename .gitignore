@@ -12,14 +12,14 @@ prog/emitter/.vscode
 prog/emitter/.micropico
 prog/test.ipynb
 
+prog/photoresistor/.vscode
+prog/photoresistor/.micropico
+
+prog/receptor/.vscode
+prog/receptor/.micropico
+
 lifi elec/lifi-backups
 lifi elec/fp-info-cache
 
 MCOT/Modele_MCOT.docx
 MCOT/MCOT_Eva_Pugliesi.pdf
-
-photoresistor/.vscode
-photoresistor/.micropico
-
-receptor/.vscode
-receptor/.micropico
