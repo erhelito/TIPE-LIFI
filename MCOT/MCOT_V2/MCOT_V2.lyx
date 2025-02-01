@@ -112,6 +112,14 @@
 \end_layout
 
 \begin_layout Standard
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+\end_layout
+
+\begin_layout Standard
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+\end_layout
+
+\begin_layout Standard
 Dans un monde où les informations circulent de plus en plus vite,
  il est essentiel de développer des méthodes innovantes pour transmettre des données de manière efficace,
  sécurisée et fiable.
@@ -121,13 +129,52 @@ Dans un monde où les informations circulent de plus en plus vite,
  en utilisant la lumière comme support de transmission.
 \end_layout
 
+\begin_layout Standard
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+\end_layout
+
+\begin_layout Standard
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+\end_layout
+
+\begin_layout Standard
+Dans notre quotidien où les informations circulent de plus en plus vite,
+ il est essentiel de développer des méthodes innovantes pour transmettre des données de manière efficace,
+ sécurisée et fiable.
+ C’est pourquoi j’ai choisi de réaliser un travail de recherche sur la communication par la lumière à grande distance à l’air libre (sans fibre optique),
+ en utilisant un laser comme moyen de transmission.
+\end_layout
+
+\begin_layout Standard
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+\end_layout
+
+\begin_layout Standard
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+\end_layout
+
 \begin_layout Section*
 Ancrage au thème
 \end_layout
 
 \begin_layout Standard
-Conversion d'un signal électrique en signal lumineux et vice-versa,
- transmission dans l'atmosphère.
+L’objectif de ce projet est de concevoir un système capable de transmettre du texte ou des images entre deux bâtiments séparés d’une centaine de mètres,
+ en utilisant un signal lumineux comme support de transmission sans perte.
+ Pour cela,
+ on 
+\series bold
+convertira
+\series default
+ un signal numérique en signal électrique puis lumineux.
+\end_layout
+
+\begin_layout Section*
+Travail de groupe
+\end_layout
+
+\begin_layout Standard
+Travail réalisé avec Raphaël Perrot,
+ étudiant l'encodage et l'émission du signal.
 \end_layout
 
 \begin_layout Section*
@@ -137,8 +184,9 @@ Positionnement thématique
 \begin_layout Standard
 
 \emph on
-PHYSIQUE (électronique),
- PHYSIQUE (optique)
+Physique ondulatoire,
+ Traitement du signal,
+ Programmation
 \end_layout
 
 \begin_layout Section*
@@ -148,25 +196,31 @@ Mots-clés
 \begin_layout Itemize
 
 \emph on
-Laser
+Communication sans fil / Wireless communication 
 \end_layout
 
 \begin_layout Itemize
 
 \emph on
-Filtrage
+Conversion Analogique-Numérique (CAN) / Analog-to-Digital Conversion (ADC)
 \end_layout
 
 \begin_layout Itemize
 
 \emph on
-CAN
+Encodage de l’information / Information encoding
 \end_layout
 
 \begin_layout Itemize
 
 \emph on
-Communication sans fil
+Algorithme K-nn / K-nn algorithm
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Laser / Laser
 \end_layout
 
 \begin_layout Section*
@@ -177,15 +231,23 @@ Bibliographie commentée
 Les technologies de communication sans fil ont connu une évolution rapide ces dernières années,
  propulsées par l’augmentation du nombre de dispositifs connectés et la nécessité de répondre à une demande croissante de données à haut débit.
  Face à la saturation des spectres radiofréquences,
- la technologie Light Fidelity (Li-Fi),
- qui repose sur l’utilisation de la lumière visible pour la transmission de données,
+ la technologie 
+\series bold
+Light Fidelity (Li-Fi)
+\series default
+,
+ qui repose sur l’utilisation de la 
+\series bold
+lumière visible
+\series default
+ pour la transmission de données,
  s’impose comme une alternative prometteuse au Wi-Fi traditionnel.
  Contrairement aux réseaux sans fil basés sur les ondes radio,
  le Li-Fi exploite le spectre lumineux,
  offrant ainsi une capacité de transmission largement supérieure 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "key-7"
+key "key-1"
 literal "false"
 
 \end_inset
@@ -194,26 +256,83 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-Le Li-Fi repose sur des sources lumineuses telles que les diodes électroluminescentes (LED) ou des lasers pour la transmission de données,
- et utilise la modulation de lumière pour encoder l’information.
+Le Li-Fi repose sur des sources lumineuses telles que les diodes électroluminescentes (LED) ou des 
+\series bold
+lasers
+\series default
+ pour la transmission de données,
+ et utilise la 
+\series bold
+modulation
+\series default
+ de lumière pour encoder l’information.
  Cette technologie permet des vitesses de transmission pouvant atteindre jusqu’à 1 Gb/s,
  et tire profit de la vaste bande passante disponible dans la lumière visible,
  estimée à 2600 fois plus grande que celle des ondes radio 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "key-17"
+key "key-2,key-3"
 literal "false"
 
 \end_inset
 
 .
- De plus,
+\end_layout
+
+\begin_layout Standard
+De plus,
  contrairement aux technologies traditionnelles,
  le Li-Fi n’interfère pas avec les dispositifs utilisant les radiofréquences,
  ce qui le rend particulièrement adapté à des environnements saturés ou à des situations nécessitant une faible interférence 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "key-7"
+key "key-1,key-2"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Lors de la communication par laser,
+ les variations de luminosité ambiante empêchent la mise en place d’un seuil de détection fixe entre les bits forts et faibles (1,0).
+ Il sera alors intéressant de mettre en place un système de détection automatique de ces états hauts et bas à postériori,
+ à l’aide d’un 
+\series bold
+algorithme de K-nn
+\series default
+.
+ Cet algorithme d’intelligence artificielle est en effet adapté pour les opérations de “clustering”,
+ permettant la classification des bits 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-4"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Pour limiter les erreurs occasionnelles,
+ la 
+\series bold
+méthode de Hamming
+\series default
+ joue un rôle crucial,
+ assurant la fiabilité des transmissions.
+ En effet,
+ les signaux lumineux peuvent être perturbés par divers facteurs comme les interférences atmosphériques ou des obstacles accidentels.
+ Ces perturbations peuvent entraîner des inversions de bits (0 devenant 1 et inversement),
+ compromettant l’intégrité du message reçu.
+ Grâce au code de Hamming,
+ il est possible non seulement de détecter ces erreurs,
+ mais aussi de les corriger automatiquement si une seule erreur de bit s’est produite 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-5"
 literal "false"
 
 \end_inset
@@ -223,12 +342,16 @@ literal "false"
 
 \begin_layout Standard
 En outre,
- cette technologie assure un niveau de sécurité accru,
+ cette technologie assure un 
+\series bold
+niveau de sécurité accru
+\series default
+,
  car la lumière visible ne traverse pas les murs et ne peut être captée qu’à proximité de la source lumineuse,
  rendant ainsi les transmissions moins vulnérables aux interceptions à distance 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "key-21"
+key "key-6"
 literal "false"
 
 \end_inset
@@ -244,11 +367,15 @@ Cependant,
  À cet égard,
  la communication par laser,
  qui repose sur des principes similaires au Li-Fi,
- permet d’élargir la portée des transmissions jusqu’à des distances de 100 mètres ou plus,
+ permet d’élargir la portée des transmissions jusqu’à des 
+\series bold
+distances de 100 mètres ou plus
+\series default
+,
  tout en maintenant un haut débit de données 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "key-17"
+key "key-3"
 literal "false"
 
 \end_inset
@@ -262,27 +389,19 @@ Dans les environnements à forte densité de trafic,
  la capacité de communication par laser à couvrir de longues distances sans interférer avec d’autres systèmes sans fil est un atout majeur.
  En outre,
  le laser offre des possibilités uniques dans des applications telles que les communications entre véhicules,
- où la précision et la directionnalité de la transmission sont cruciales pour garantir la sécurité et la fiabilité des systèmes de transport intelligent 
+ où la 
+\series bold
+précision et la directionnalité
+\series default
+ de la transmission sont cruciales pour garantir la sécurité et la fiabilité des systèmes de transport intelligent 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "key-21"
+key "key-4"
 literal "false"
 
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-En conclusion,
- le Li-Fi et la communication par laser représentent des solutions de communication sans fil complémentaires,
- répondant aux défis de capacité,
- de sécurité et de gestion des interférences dans des environnements de plus en plus saturés.
- Grâce à l’utilisation de l’infrastructure lumineuse existante et aux avancées technologiques,
- ces technologies ouvrent la voie à de nouvelles applications dans des secteurs clés tels que la géolocalisation,
- la sécurité des transports,
- et la transmission de données à haut débit dans des espaces urbains.
- Leur adoption généralisée nécessitera néanmoins un effort concerté de la part des chercheurs et des industriels pour surmonter les obstacles techniques et normatifs encore présents.
 \end_layout
 
 \begin_layout Standard
@@ -297,15 +416,13 @@ Problématique retenue
 \end_layout
 
 \begin_layout Standard
-Peut-on utiliser la technologie laser pour communiquer sur de longues distances sans utilisation de fibre optique ?
+La technologie laser est-elle efficace pour communiquer sur de longues distances ?
+ Comment limiter les erreurs présentes lors de la réception d’un signal binaire ?
+ Quels sont les avantages qu’elle présente par rapport à l’utilisation de fibre optique ?
 \end_layout
 
 \begin_layout Section*
 Objectifs du TIPE
-\end_layout
-
-\begin_layout Enumerate
-Concevoir un système d'émission de signal électronique via un signal optique
 \end_layout
 
 \begin_layout Enumerate
@@ -317,7 +434,11 @@ Réaliser un dispositif capable de communiquer à l'échelle de la dizaine de m�
 \end_layout
 
 \begin_layout Enumerate
-Concevoir un système d'encodage de l'information efficace limitant la perte d'information
+Créer un algorithme de traitement des données reçues et de correction des erreurs pour limiter la perte d'information
+\end_layout
+
+\begin_layout Enumerate
+Étudier les limitations techniques du prototype
 \end_layout
 
 \begin_layout Enumerate
@@ -327,18 +448,13 @@ Amélioration du système pour une utilisation à longue distance
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-key "key-7"
+key "key-1"
+literal "false"
 
 \end_inset
 
 Louiza Hamada.
- Conception d’une architecture suintroductions :
-     Louiza hamada :
-         Ces derniers temps,
- le nombre de gadgets et d'applications reposant sur la communication sans fil a explosé,
- entraînant des transformations considérables dans le style de vie des gens.
- Pour gérer cette augmentation de connectivité,
- plusieurs techniques avancées sont prévues avec les normpportant la technologie Li-Fi.
+ Conception d’une architecture supportant la technologie Li-Fi.
  Réseaux et télécommunications [cs.NI].
  Université de Haute Alsace - Mulhouse,
  2022.
@@ -351,7 +467,8 @@ Louiza Hamada.
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-key "key-8"
+key "key-2"
+literal "false"
 
 \end_inset
 
@@ -370,7 +487,8 @@ literal "false"
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-key "key-17"
+key "key-3"
+literal "false"
 
 \end_inset
 
@@ -385,7 +503,34 @@ Technologie LiFi (Light Fidelity) par Luc CHASSAGNE,
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-key "key-21"
+key "key-4"
+literal "false"
+
+\end_inset
+
+Alternatives K-nn rules in supervised pattern recognition,
+ D.Coomans,
+ D.L.Massart
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-5"
+literal "false"
+
+\end_inset
+
+Error Detecting and Error Correcting Codes,
+ R.W.Hamming,
+ 1950
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-6"
+literal "false"
 
 \end_inset
 
