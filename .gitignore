@@ -18,6 +18,7 @@ prog/visualizer
 
 prog/receptor/.vscode
 prog/receptor/.micropico
+prog/receptor
 
 lifi elec/lifi-backups
 lifi elec/fp-info-cache
