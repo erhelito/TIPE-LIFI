@@ -11,6 +11,7 @@ prog/emitter/__pycache__
 prog/emitter/.vscode
 prog/emitter/.micropico
 prog/test.ipynb
+prog/computing/KNN
 
 prog/photoresistor/.vscode
 prog/photoresistor/.micropico
