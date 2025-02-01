@@ -13,8 +13,8 @@ prog/emitter/.micropico
 prog/test.ipynb
 prog/computing/KNN
 
-prog/photoresistor/.vscode
-prog/photoresistor/.micropico
+prog/photoresistor
+prog/visualizer
 
 prog/receptor/.vscode
 prog/receptor/.micropico
