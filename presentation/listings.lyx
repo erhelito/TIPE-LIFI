@@ -1,0 +1,3256 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass extarticle
+\begin_preamble
+\usepackage{hyperref}   % pour les liens cliquables de la table des matières
+ 
+\makeatletter
+\@addtoreset{section}{part}   % reprendre à partir de 1 les sections des parties suivantes.
+\makeatother
+\end_preamble
+\options titlepage
+\use_default_options true
+\maintain_unincluded_children no
+\language french
+\language_package default
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3cm
+\topmargin 3cm
+\rightmargin 3cm
+\bottommargin 3cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\align center
+
+\size largest
+\uuline on
+Communication par laser à grande distance,
+ listings de code
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Émission
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=Python,numbers=left,breaklines=true,showstringspaces=false"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+from machine import Pin,
+ PWM,
+ ADC # type:
+ ignore
+\end_layout
+
+\begin_layout Plain Layout
+
+from time import sleep
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+def format_bis(entier,
+ nb_bits):
+\end_layout
+
+\begin_layout Plain Layout
+
+    """
+\end_layout
+
+\begin_layout Plain Layout
+
+    Convertit un entier en binaire sur un nombre fixe de bits.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    Args:
+\end_layout
+
+\begin_layout Plain Layout
+
+        entier (int):
+ L'entier à convertir.
+\end_layout
+
+\begin_layout Plain Layout
+
+        nb_bits (int):
+ Le nombre de bits pour la représentation binaire.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    Returns:
+\end_layout
+
+\begin_layout Plain Layout
+
+        str:
+ La représentation binaire de l'entier sur le nombre de bits spécifié.
+\end_layout
+
+\begin_layout Plain Layout
+
+    """
+\end_layout
+
+\begin_layout Plain Layout
+
+    # Convertit l'entier en binaire
+\end_layout
+
+\begin_layout Plain Layout
+
+    binaire = ""
+\end_layout
+
+\begin_layout Plain Layout
+
+    while entier > 0:
+\end_layout
+
+\begin_layout Plain Layout
+
+        binaire = str(entier % 2) + binaire
+\end_layout
+
+\begin_layout Plain Layout
+
+        entier //= 2
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    # Ajoute des zéros de remplissage si nécessaire
+\end_layout
+
+\begin_layout Plain Layout
+
+    while len(binaire) < nb_bits:
+\end_layout
+
+\begin_layout Plain Layout
+
+        binaire = "0" + binaire
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    # Tronque la chaîne si elle est trop longue
+\end_layout
+
+\begin_layout Plain Layout
+
+    if len(binaire) > nb_bits:
+\end_layout
+
+\begin_layout Plain Layout
+
+        binaire = binaire[-nb_bits:]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    return binaire
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+led = Pin('LED',
+ Pin.OUT)
+\end_layout
+
+\begin_layout Plain Layout
+
+laser = Pin(16,
+ Pin.OUT)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Alphabet personnalisé codé sur 32 caractères (chacun pouvant ainsi être codé sur 5 bits)
+\end_layout
+
+\begin_layout Plain Layout
+
+alphabet = {'a':1,'b':2,'c':3,'d':4,'e':5,'f':6,'g':7,'h':8,'i':9,'j':10,'k':11,'l':12,
+\end_layout
+
+\begin_layout Plain Layout
+
+            'm':13,'n':14,'o':15,'p':16,'q':17,'r':18,'s':19,'t':20,'u':21,'v':22,'w':23,
+\end_layout
+
+\begin_layout Plain Layout
+
+            'x':24,'y':25,'z':26,' ':27,',':28,'.':29,'!':30,'?':31,"'":32}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Inversion du dictionnaire pour obtenir une correspondance valeur -> lettre
+\end_layout
+
+\begin_layout Plain Layout
+
+tebahpla = {i:
+ j for j,
+ i in alphabet.items()}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+def text_to_binary(message):
+ #Entrée :
+ str
+\end_layout
+
+\begin_layout Plain Layout
+
+    # Stocker le résultat
+\end_layout
+
+\begin_layout Plain Layout
+
+    binary_message = ""
+\end_layout
+
+\begin_layout Plain Layout
+
+    # Parcourir chaque caractère
+\end_layout
+
+\begin_layout Plain Layout
+
+    for c in message:
+\end_layout
+
+\begin_layout Plain Layout
+
+        if c in alphabet:
+\end_layout
+
+\begin_layout Plain Layout
+
+            # On attribue une valeur au cractère
+\end_layout
+
+\begin_layout Plain Layout
+
+            value = alphabet[c]
+\end_layout
+
+\begin_layout Plain Layout
+
+            # Convertir la valeur en binaire sur 5 bits
+\end_layout
+
+\begin_layout Plain Layout
+
+            binary_c = format_bis(value,
+ 5)
+\end_layout
+
+\begin_layout Plain Layout
+
+            binary_message += binary_c
+\end_layout
+
+\begin_layout Plain Layout
+
+        else:
+\end_layout
+
+\begin_layout Plain Layout
+
+            print("Caractère '{c}' non supporté dans l'alphabet personnalisé.")
+\end_layout
+
+\begin_layout Plain Layout
+
+    return binary_message
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+def hamming_encode(str):
+\end_layout
+
+\begin_layout Plain Layout
+
+    reverse_str=str[::-1]
+\end_layout
+
+\begin_layout Plain Layout
+
+    n=len(str)
+\end_layout
+
+\begin_layout Plain Layout
+
+    k = 0
+\end_layout
+
+\begin_layout Plain Layout
+
+    while (2 ** k) < (n + k + 1):
+ #Calcul du nombre k de bits de contrôle
+\end_layout
+
+\begin_layout Plain Layout
+
+        k += 1
+\end_layout
+
+\begin_layout Plain Layout
+
+    result = [0 for u in range (n+k)]
+\end_layout
+
+\begin_layout Plain Layout
+
+    i = 0
+\end_layout
+
+\begin_layout Plain Layout
+
+    for x in range(1,n+k+1):
+ #Ajoute les bits d'informations aux bons emplacements
+\end_layout
+
+\begin_layout Plain Layout
+
+        if x & (x-1) != 0:
+ #Vérifie si x n'est pas une puissance de 2,
+ & est l'opérateur ET logique qui compare en binaire x et x-1.
+\end_layout
+
+\begin_layout Plain Layout
+
+            #L'idée avec x et x-1 est que si x est une puissance de 2,
+ son binaire ne possède qu'un 1,
+ x-1 inverse alors tous les bits.
+\end_layout
+
+\begin_layout Plain Layout
+
+            #Donc aucun des bits ne sera commun à x et x-1 donc "l'indicatrice" & ne s'allume jamais et on a 0.
+\end_layout
+
+\begin_layout Plain Layout
+
+            result[x-1]=reverse_str[i]
+\end_layout
+
+\begin_layout Plain Layout
+
+            i+=1
+\end_layout
+
+\begin_layout Plain Layout
+
+    bits_1=[]
+\end_layout
+
+\begin_layout Plain Layout
+
+    bin_bits_1=[]
+\end_layout
+
+\begin_layout Plain Layout
+
+    for x in range(n+k):
+\end_layout
+
+\begin_layout Plain Layout
+
+        if result[x] == '1':
+\end_layout
+
+\begin_layout Plain Layout
+
+            bits_1.append(x+1) #stock la position de tous les bits valant 1
+\end_layout
+
+\begin_layout Plain Layout
+
+    for x in bits_1:
+\end_layout
+
+\begin_layout Plain Layout
+
+        bin_bits_1.append(format_bis(x,k))
+\end_layout
+
+\begin_layout Plain Layout
+
+    parity=[0 for i in range(k)]
+\end_layout
+
+\begin_layout Plain Layout
+
+    for x in bin_bits_1:
+\end_layout
+
+\begin_layout Plain Layout
+
+        for i in range(len(x)):
+\end_layout
+
+\begin_layout Plain Layout
+
+            parity[i]+=int(x[::-1][i]) #Calcule la parité de chaque bit de contrôle
+\end_layout
+
+\begin_layout Plain Layout
+
+    for u in range(len(parity)):
+\end_layout
+
+\begin_layout Plain Layout
+
+        if parity[u]%2==1:
+\end_layout
+
+\begin_layout Plain Layout
+
+            result[(2**u)-1]='1' #Ajuste la valeur du bit de contrôle selon sa parité
+\end_layout
+
+\begin_layout Plain Layout
+
+    final=''
+\end_layout
+
+\begin_layout Plain Layout
+
+    for y in result[::-1]:
+\end_layout
+
+\begin_layout Plain Layout
+
+        final+=y
+\end_layout
+
+\begin_layout Plain Layout
+
+    return(final)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+def emission(binary,f):
+\end_layout
+
+\begin_layout Plain Layout
+
+    binary2="1"+str(binary)+"1"
+\end_layout
+
+\begin_layout Plain Layout
+
+    for x in binary2:
+\end_layout
+
+\begin_layout Plain Layout
+
+        if x == "1":
+\end_layout
+
+\begin_layout Plain Layout
+
+            laser.high()
+\end_layout
+
+\begin_layout Plain Layout
+
+            sleep(1/f)
+\end_layout
+
+\begin_layout Plain Layout
+
+            laser.low()
+\end_layout
+
+\begin_layout Plain Layout
+
+        else:
+\end_layout
+
+\begin_layout Plain Layout
+
+            sleep(1/f)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+def text_to_light(message,f):
+\end_layout
+
+\begin_layout Plain Layout
+
+    return(emission(text_to_binary(message),f))
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+def text_to_light_hamming(message,f):
+\end_layout
+
+\begin_layout Plain Layout
+
+    return(emission(hamming_encode(text_to_binary(message)),f))
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Réception (code principal)
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=Python,numbers=left,breaklines=true,showstringspaces=false"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+from machine import Pin,
+ ADC # type:
+ ignore
+\end_layout
+
+\begin_layout Plain Layout
+
+import kmean
+\end_layout
+
+\begin_layout Plain Layout
+
+import error_detection
+\end_layout
+
+\begin_layout Plain Layout
+
+import convertors
+\end_layout
+
+\begin_layout Plain Layout
+
+import hamming
+\end_layout
+
+\begin_layout Plain Layout
+
+from time import sleep
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+photo = ADC(Pin(26))
+\end_layout
+
+\begin_layout Plain Layout
+
+base = ADC(Pin(27))
+\end_layout
+
+\begin_layout Plain Layout
+
+switch = Pin(0,
+ Pin.IN)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+f_emit = 7
+\end_layout
+
+\begin_layout Plain Layout
+
+bit_duration = 3
+\end_layout
+
+\begin_layout Plain Layout
+
+f_recep = f_emit*bit_duration
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+data = []
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+while switch.value() == 0:
+\end_layout
+
+\begin_layout Plain Layout
+
+    pass
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+while switch.value() == 1:
+\end_layout
+
+\begin_layout Plain Layout
+
+    data.append([photo.read_u16(),
+ base.read_u16()])
+\end_layout
+
+\begin_layout Plain Layout
+
+    sleep(1/f_recep)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+centers = [[min(point[0] for point in data),
+ min(point[1] for point in data)],[max(point[0] for point in data),
+ max(point[1] for point in data)]]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+centers,
+ labels = kmean.k_means(data,
+ centers,
+ n = 100)
+\end_layout
+
+\begin_layout Plain Layout
+
+bits = error_detection.clean_signal(labels,
+ bit_duration)
+\end_layout
+
+\begin_layout Plain Layout
+
+bits = convertors.list_to_str(bits)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+### sans hamming
+\end_layout
+
+\begin_layout Plain Layout
+
+message = convertors.binary_to_text(bits)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+### avec hamming
+\end_layout
+
+\begin_layout Plain Layout
+
+hamminged_message = hamming.hamming_decode(bits)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+message = convertors.binary_to_text(hamminged_message)
+\end_layout
+
+\begin_layout Plain Layout
+
+print(message)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Réception (K-mean)
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=Python,numbers=left,breaklines=true,showstringspaces=false"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+from math import sqrt
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+def distance(p1,
+ p2):
+\end_layout
+
+\begin_layout Plain Layout
+
+    return sqrt((p1[0] - p2[0]) ** 2 + (p1[1] - p2[1]) ** 2)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+def k_means(data,
+ centers,
+ n=100):
+\end_layout
+
+\begin_layout Plain Layout
+
+    n_points = len(data)
+\end_layout
+
+\begin_layout Plain Layout
+
+    n_clusters = len(centers)
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\end_layout
+
+\begin_layout Plain Layout
+
+    labels = [0]*n_points
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\end_layout
+
+\begin_layout Plain Layout
+
+    for _ in range(n):
+\end_layout
+
+\begin_layout Plain Layout
+
+        # update labels
+\end_layout
+
+\begin_layout Plain Layout
+
+        new_labels = []
+\end_layout
+
+\begin_layout Plain Layout
+
+        for i in range(n_points):
+\end_layout
+
+\begin_layout Plain Layout
+
+            # compute all distances,
+ attribute new centers
+\end_layout
+
+\begin_layout Plain Layout
+
+            distances = [distance(data[i],
+ center) for center in centers]
+\end_layout
+
+\begin_layout Plain Layout
+
+            new_labels.append(distances.index(min(distances)))
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+        # update clusters
+\end_layout
+
+\begin_layout Plain Layout
+
+        new_centers = []
+\end_layout
+
+\begin_layout Plain Layout
+
+        for k in range(n_clusters):
+\end_layout
+
+\begin_layout Plain Layout
+
+            cluster_points = [data[i] for i in range(n_points) if new_labels[i] == k]
+\end_layout
+
+\begin_layout Plain Layout
+
+            if cluster_points != []:
+ # for not empty clusters
+\end_layout
+
+\begin_layout Plain Layout
+
+                mean_x = sum(point[0] for point in cluster_points) / len(cluster_points)
+\end_layout
+
+\begin_layout Plain Layout
+
+                mean_y = sum(point[1] for point in cluster_points) / len(cluster_points)
+\end_layout
+
+\begin_layout Plain Layout
+
+                new_centers.append([mean_x,
+ mean_y])
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+            else:
+ # for empty clusters
+\end_layout
+
+\begin_layout Plain Layout
+
+                new_centers.append(centers[k])
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\end_layout
+
+\begin_layout Plain Layout
+
+        # check for convergence
+\end_layout
+
+\begin_layout Plain Layout
+
+        if new_centers == centers:
+\end_layout
+
+\begin_layout Plain Layout
+
+            break
+\end_layout
+
+\begin_layout Plain Layout
+
+        centers = new_centers
+\end_layout
+
+\begin_layout Plain Layout
+
+        labels = new_labels
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    print("labels")
+\end_layout
+
+\begin_layout Plain Layout
+
+    print(labels)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    return centers,
+ labels
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Réception (Traitement)
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=Python,numbers=left,breaklines=true,showstringspaces=false"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+def clean_signal(bits,
+ bit_duration):
+\end_layout
+
+\begin_layout Plain Layout
+
+    output = rmv_first_zeros(bits,
+ bit_duration)
+\end_layout
+
+\begin_layout Plain Layout
+
+    output = filtering(output,
+ bit_duration)
+\end_layout
+
+\begin_layout Plain Layout
+
+    output = rmv_last_zeros(output)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    output = output[1:-1]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    print("clean_signal")
+\end_layout
+
+\begin_layout Plain Layout
+
+    print(output)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    return output
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+def rmv_first_zeros(bits,
+ bit_duration):
+\end_layout
+
+\begin_layout Plain Layout
+
+    init = True
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    while init :
+\end_layout
+
+\begin_layout Plain Layout
+
+        while bits[0] == 0:
+\end_layout
+
+\begin_layout Plain Layout
+
+            bits.pop(0)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+        mean = round(sum(bits[:bit_duration])/bit_duration)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+        if mean == 1:
+\end_layout
+
+\begin_layout Plain Layout
+
+            init = False
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+        else:
+\end_layout
+
+\begin_layout Plain Layout
+
+            bits.pop(0)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    return bits
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+def filtering(bits,
+ bit_duration):
+\end_layout
+
+\begin_layout Plain Layout
+
+    n = len(bits)
+\end_layout
+
+\begin_layout Plain Layout
+
+    groups = [bits[i:i+bit_duration] for i in range(0,
+ n,
+ bit_duration)]
+\end_layout
+
+\begin_layout Plain Layout
+
+    output = []
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    for group in groups:
+\end_layout
+
+\begin_layout Plain Layout
+
+        mean = round(sum(group)/bit_duration)
+\end_layout
+
+\begin_layout Plain Layout
+
+        output.append(mean)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    return output
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+def fintering2(bits,
+ bit_duration):
+\end_layout
+
+\begin_layout Plain Layout
+
+    n = len(bits)
+\end_layout
+
+\begin_layout Plain Layout
+
+    groups = [bits[i:i+bit_duration] for i in range(0,
+ n,
+ bit_duration)]
+\end_layout
+
+\begin_layout Plain Layout
+
+    output = []
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    for group in groups:
+\end_layout
+
+\begin_layout Plain Layout
+
+        mean = round(sum(group[1:-1])/(bit_duration-2))
+\end_layout
+
+\begin_layout Plain Layout
+
+        output.append(mean)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    return output
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+def rmv_last_zeros(bits):
+\end_layout
+
+\begin_layout Plain Layout
+
+    while bits[-1] == 0:
+\end_layout
+
+\begin_layout Plain Layout
+
+      bits.pop(-1)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    return bits
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Réception (Hamming)
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=Python,numbers=left,breaklines=true,showstringspaces=false"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+def format_bis(entier,
+ nb_bits):
+\end_layout
+
+\begin_layout Plain Layout
+
+    """
+\end_layout
+
+\begin_layout Plain Layout
+
+    Convertit un entier en binaire sur un nombre fixe de bits.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    Args:
+\end_layout
+
+\begin_layout Plain Layout
+
+        entier (int):
+ L'entier à convertir.
+\end_layout
+
+\begin_layout Plain Layout
+
+        nb_bits (int):
+ Le nombre de bits pour la représentation binaire.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    Returns:
+\end_layout
+
+\begin_layout Plain Layout
+
+        str:
+ La représentation binaire de l'entier sur le nombre de bits spécifié.
+\end_layout
+
+\begin_layout Plain Layout
+
+    """
+\end_layout
+
+\begin_layout Plain Layout
+
+    # Convertit l'entier en binaire
+\end_layout
+
+\begin_layout Plain Layout
+
+    binaire = ""
+\end_layout
+
+\begin_layout Plain Layout
+
+    while entier > 0:
+\end_layout
+
+\begin_layout Plain Layout
+
+        binaire = str(entier % 2) + binaire
+\end_layout
+
+\begin_layout Plain Layout
+
+        entier //= 2
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    # Ajoute des zéros de remplissage si nécessaire
+\end_layout
+
+\begin_layout Plain Layout
+
+    while len(binaire) < nb_bits:
+\end_layout
+
+\begin_layout Plain Layout
+
+        binaire = "0" + binaire
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    # Tronque la chaîne si elle est trop longue
+\end_layout
+
+\begin_layout Plain Layout
+
+    if len(binaire) > nb_bits:
+\end_layout
+
+\begin_layout Plain Layout
+
+        binaire = binaire[-nb_bits:]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    return binaire
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+def hamming_decode(stri:str)->str:
+\end_layout
+
+\begin_layout Plain Layout
+
+    reverse_str=list(stri[::-1])
+\end_layout
+
+\begin_layout Plain Layout
+
+    n=len(stri)
+\end_layout
+
+\begin_layout Plain Layout
+
+    k = 0
+\end_layout
+
+\begin_layout Plain Layout
+
+    while (2 ** k) < (n + 1):
+ #Cherche le nombre de bits de contrôle
+\end_layout
+
+\begin_layout Plain Layout
+
+        k += 1
+\end_layout
+
+\begin_layout Plain Layout
+
+    result=[]
+\end_layout
+
+\begin_layout Plain Layout
+
+    bits_1=[]
+\end_layout
+
+\begin_layout Plain Layout
+
+    bin_bits_1=[]
+\end_layout
+
+\begin_layout Plain Layout
+
+    for x in range(n):
+\end_layout
+
+\begin_layout Plain Layout
+
+        if reverse_str[x] == '1':
+\end_layout
+
+\begin_layout Plain Layout
+
+            bits_1.append(x+1) #stock la position de tous les bits valant 1
+\end_layout
+
+\begin_layout Plain Layout
+
+    for x in bits_1:
+\end_layout
+
+\begin_layout Plain Layout
+
+        bin_bits_1.append(format_bis(x,k))
+\end_layout
+
+\begin_layout Plain Layout
+
+    parity=[0 for i in range(k)]
+\end_layout
+
+\begin_layout Plain Layout
+
+    for x in bin_bits_1:
+\end_layout
+
+\begin_layout Plain Layout
+
+        for i in range(len(x)):
+\end_layout
+
+\begin_layout Plain Layout
+
+            parity[i]+=int(x[::-1][i]) #Calcule la parité de chaque bit de contrôle
+\end_layout
+
+\begin_layout Plain Layout
+
+    ok=0 #Tant que ok=0,
+ aucune erreur détectée
+\end_layout
+
+\begin_layout Plain Layout
+
+    bit_error = 0
+\end_layout
+
+\begin_layout Plain Layout
+
+    for u in range(len(parity)):
+\end_layout
+
+\begin_layout Plain Layout
+
+        if parity[u]%2==1:
+\end_layout
+
+\begin_layout Plain Layout
+
+            ok+=1
+\end_layout
+
+\begin_layout Plain Layout
+
+            bit_error+=2**u
+\end_layout
+
+\begin_layout Plain Layout
+
+            index_bit_error=bit_error-1
+\end_layout
+
+\begin_layout Plain Layout
+
+    if ok == 0:
+\end_layout
+
+\begin_layout Plain Layout
+
+        print("Aucune erreur détectée")
+\end_layout
+
+\begin_layout Plain Layout
+
+    else:
+\end_layout
+
+\begin_layout Plain Layout
+
+        print("Erreur détectée au bit",bit_error)
+\end_layout
+
+\begin_layout Plain Layout
+
+        reverse_str[index_bit_error] = '0' if reverse_str[index_bit_error] == '1' else '1'
+\end_layout
+
+\begin_layout Plain Layout
+
+    for u in range(n):
+\end_layout
+
+\begin_layout Plain Layout
+
+        if u+1 & u != 0:
+\end_layout
+
+\begin_layout Plain Layout
+
+            result.append(reverse_str[u])
+\end_layout
+
+\begin_layout Plain Layout
+
+    final=''
+\end_layout
+
+\begin_layout Plain Layout
+
+    for y in result[::-1]:
+\end_layout
+
+\begin_layout Plain Layout
+
+        final+=y
+\end_layout
+
+\begin_layout Plain Layout
+
+    return final
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Réception (Conversion)
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=Python,numbers=left,breaklines=true,showstringspaces=false"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+# personalized alphabet coded on 32 characters (each character can be coded on 5 bits)
+\end_layout
+
+\begin_layout Plain Layout
+
+alphabet = {'a':1,'b':2,'c':3,'d':4,'e':5,'f':6,'g':7,'h':8,'i':9,'j':10,'k':11,'l':12,
+\end_layout
+
+\begin_layout Plain Layout
+
+            'm':13,'n':14,'o':15,'p':16,'q':17,'r':18,'s':19,'t':20,'u':21,'v':22,'w':23,
+\end_layout
+
+\begin_layout Plain Layout
+
+            'x':24,'y':25,'z':26,' ':27,',':28,'.':29,'!':30,'?':31,"'":32}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# inverting the dictionary to get a value -> letter
+\end_layout
+
+\begin_layout Plain Layout
+
+tebahpla = {i:
+ j for j,
+ i in alphabet.items()}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+def list_to_str(list:list) -> str:
+\end_layout
+
+\begin_layout Plain Layout
+
+    output = ""
+\end_layout
+
+\begin_layout Plain Layout
+
+    for i in list :
+\end_layout
+
+\begin_layout Plain Layout
+
+        output += str(i)
+\end_layout
+
+\begin_layout Plain Layout
+
+    return output
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+def binary_to_text(binary_message,
+ tebahpla:dict=tebahpla) -> str:
+\end_layout
+
+\begin_layout Plain Layout
+
+    """Convert a "01" string to a string of ASCII characters."""
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    if type(binary_message) != str:
+\end_layout
+
+\begin_layout Plain Layout
+
+        binary_message = list_to_str(binary_message)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    message = ""
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    # parse the binary string into groups of 5 bits
+\end_layout
+
+\begin_layout Plain Layout
+
+    for i in range(0,
+ len(binary_message),
+ 5):
+\end_layout
+
+\begin_layout Plain Layout
+
+        bit = binary_message[i:i+5]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+        # convert the 5 bits to an integer,
+ convert the integer to a character
+\end_layout
+
+\begin_layout Plain Layout
+
+        try :
+\end_layout
+
+\begin_layout Plain Layout
+
+            message += tebahpla[int(bit,
+ 2)]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+        # if wrong char
+\end_layout
+
+\begin_layout Plain Layout
+
+        except KeyError:
+\end_layout
+
+\begin_layout Plain Layout
+
+            message += "*"
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    return message
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Topographie de l'irradiance
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=Python,numbers=left,breaklines=true,showstringspaces=false"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+import numpy as np
+\end_layout
+
+\begin_layout Plain Layout
+
+import matplotlib.pyplot as plt
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+z_max = 3
+\end_layout
+
+\begin_layout Plain Layout
+
+r_max = 5
+\end_layout
+
+\begin_layout Plain Layout
+
+z_r = 1
+\end_layout
+
+\begin_layout Plain Layout
+
+w_0 = 1
+\end_layout
+
+\begin_layout Plain Layout
+
+I_0 = 1
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+z_list = np.linspace(0,
+ z_max,
+ 300)
+\end_layout
+
+\begin_layout Plain Layout
+
+r_list = np.linspace(-r_max,
+ r_max,
+ 300)
+\end_layout
+
+\begin_layout Plain Layout
+
+Z,
+ R = np.meshgrid(z_list,
+ r_list)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+def div(z,
+ A,
+ B):
+\end_layout
+
+\begin_layout Plain Layout
+
+    return A * np.sqrt(1 + (z / B) ** 2)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+def gaussian(r,
+ A,
+ B):
+\end_layout
+
+\begin_layout Plain Layout
+
+    return A * np.exp(-2 * r**2 / B**2)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+def radiance(z,
+ r):
+\end_layout
+
+\begin_layout Plain Layout
+
+    w = div(z,
+ w_0,
+ z_r)
+\end_layout
+
+\begin_layout Plain Layout
+
+    return gaussian(r,
+ I_0 * (w_0 / w)**2,
+ w)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+I = radiance(Z,
+ R)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.figure('Irradiance faisceau laser gaussien')
+\end_layout
+
+\begin_layout Plain Layout
+
+extent = [z_list.min(),
+ z_list.max(),
+ r_list.min(),
+ r_list.max()]
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.imshow(I,
+ extent=extent,
+ aspect='auto',
+ cmap='inferno')
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.xlabel('Distance laser/réception (m)')
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.ylabel('Rayon (mm)')
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.title('Irradiance du faisceau laser gaussien (valeurs arbitraires)')
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.colorbar(label=r'Irradiance ($W 
+\backslash
+cdot m^{-2}$)')
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.tight_layout()
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.show()
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Caractérisation du faisceau Gaussien :
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=Python,numbers=left,breaklines=true,showstringspaces=false"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+import numpy as np
+\end_layout
+
+\begin_layout Plain Layout
+
+import matplotlib.pyplot as plt
+\end_layout
+
+\begin_layout Plain Layout
+
+import sqlite3
+\end_layout
+
+\begin_layout Plain Layout
+
+from scipy.optimize import curve_fit
+\end_layout
+
+\begin_layout Plain Layout
+
+import seaborn as sns
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+def gauss(x,
+ A,
+ B):
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+	y = A*np.exp(-2*x**2/(B**2))
+\end_layout
+
+\begin_layout Plain Layout
+
+	return y
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+def div(x,A,B):
+\end_layout
+
+\begin_layout Plain Layout
+
+	y = A*np.sqrt(1+(x/B)**2)
+\end_layout
+
+\begin_layout Plain Layout
+
+	return y
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+def get_r_v(z):
+\end_layout
+
+\begin_layout Plain Layout
+
+    global cur
+\end_layout
+
+\begin_layout Plain Layout
+
+    cur.execute(f'SELECT data.Radius,
+ data.Voltage FROM data WHERE data.distance = {z} AND data.radius >= {0} ORDER BY data.Radius')
+\end_layout
+
+\begin_layout Plain Layout
+
+    rows = cur.fetchall()
+\end_layout
+
+\begin_layout Plain Layout
+
+    r = np.array([row[0] for row in rows])
+\end_layout
+
+\begin_layout Plain Layout
+
+    v = np.array([row[1] for row in rows])
+\end_layout
+
+\begin_layout Plain Layout
+
+    return np.array(r),np.array(v)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+conn = sqlite3.connect('V2/data2.db')
+\end_layout
+
+\begin_layout Plain Layout
+
+cur = conn.cursor()
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+z_list = cur.execute('SELECT DISTINCT data.distance FROM data ORDER BY data.distance').fetchall()
+\end_layout
+
+\begin_layout Plain Layout
+
+z_list = [z[0] for z in z_list]
+\end_layout
+
+\begin_layout Plain Layout
+
+W_list = []
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+for z in z_list:
+\end_layout
+
+\begin_layout Plain Layout
+
+    R,V = get_r_v(z)
+\end_layout
+
+\begin_layout Plain Layout
+
+    parameters,covariance = curve_fit(gauss,
+ R,
+ V)
+\end_layout
+
+\begin_layout Plain Layout
+
+    fit_A = parameters[0]
+\end_layout
+
+\begin_layout Plain Layout
+
+    fit_B = parameters[1]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    W_list.append(fit_B)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    fit_r = np.linspace(min(R),
+ max(R),
+ 100)
+\end_layout
+
+\begin_layout Plain Layout
+
+    fit_v = gauss(fit_r,
+ fit_A,
+ fit_B)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    plt.figure(f'Matrice de covariance gaussienne z={z}m')
+\end_layout
+
+\begin_layout Plain Layout
+
+    plt.title(f'Matrice de covariance gaussienne z={z}m')
+\end_layout
+
+\begin_layout Plain Layout
+
+    sns.heatmap(covariance,
+ annot=True,
+ xticklabels=['Amplitude (V)',
+ 'w(z) (mm)'],
+ yticklabels=['Amplitude (V)',
+ 'w(z) (mm)'],
+ cmap='viridis')
+\end_layout
+
+\begin_layout Plain Layout
+
+    plt.figure(f'Tension au fil du rayon (z={z})')
+\end_layout
+
+\begin_layout Plain Layout
+
+    plt.plot(R,V,
+ marker='+',
+ linestyle='dotted',
+ markersize=10,
+ label='Mesures')
+\end_layout
+
+\begin_layout Plain Layout
+
+    plt.plot(fit_r,
+ fit_v,
+ color='orange',
+ label='Régression')
+\end_layout
+
+\begin_layout Plain Layout
+
+    plt.grid()
+\end_layout
+
+\begin_layout Plain Layout
+
+    plt.xlabel('Rayon (mm)')
+\end_layout
+
+\begin_layout Plain Layout
+
+    plt.ylabel('Tension (V)')
+\end_layout
+
+\begin_layout Plain Layout
+
+    plt.title(f'Évolution de la tension au fil du rayon,
+ z={z}m')
+\end_layout
+
+\begin_layout Plain Layout
+
+    plt.tight_layout()
+\end_layout
+
+\begin_layout Plain Layout
+
+    plt.legend()
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+z_list,
+ W_list = np.array(z_list),np.array(W_list)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+parameters,covariance = curve_fit(div,
+ z_list,
+ W_list)
+\end_layout
+
+\begin_layout Plain Layout
+
+fit_A = parameters[0]
+\end_layout
+
+\begin_layout Plain Layout
+
+fit_B = parameters[1]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.figure('Matrice de covariance rayon caractéristique')
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.title('Matrice de covariance rayon caractéristique')
+\end_layout
+
+\begin_layout Plain Layout
+
+sns.heatmap(covariance,
+ annot=True,
+ xticklabels=[r'${W_0}$ (mm)',
+ r'${z_r}$ (m)'],
+ yticklabels=[r'${W_0}$ (mm)',
+ r'${z_r}$ (m)'],
+ cmap='viridis')
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+print(f'W0 = {fit_A},
+ zr = {fit_B}')
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+fit_z = np.linspace(min(z_list),
+ max(z_list),
+ 100)
+\end_layout
+
+\begin_layout Plain Layout
+
+fit_w = div(fit_z,
+ fit_A,
+ fit_B)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.figure('Rayon caractéristique distance')
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.plot(z_list,
+ W_list,
+ marker='+',
+ linestyle='dotted',
+ markersize=10,
+ label='Mesures')
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.plot(fit_z,
+ fit_w,
+ color='orange',
+ label='Régression')
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.xlabel('Distance laser/réception (m)')
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.ylabel('Rayon caractéristique (mm)')
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.title('Rayon caractéristique au fil de la distance')
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.legend()
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.tight_layout()
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.grid()
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.show()
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Caractérisation des photorésistances :
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=Python,numbers=left,breaklines=true,showstringspaces=false"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+import numpy as np
+\end_layout
+
+\begin_layout Plain Layout
+
+import matplotlib.pyplot as plt
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# res de mesure
+\end_layout
+
+\begin_layout Plain Layout
+
+R_mes = 215
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+I_global = []
+\end_layout
+
+\begin_layout Plain Layout
+
+U_photo_global = []
+\end_layout
+
+\begin_layout Plain Layout
+
+i_mes_global = []
+\end_layout
+
+\begin_layout Plain Layout
+
+E = np.array([0,0.49,0.98,1.47,1.96,2.45,2.94])
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+def store(I,U_R):
+\end_layout
+
+\begin_layout Plain Layout
+
+    U_photo = E - U_R
+\end_layout
+
+\begin_layout Plain Layout
+
+    i_mes = U_R / R_mes
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    I_global.append(I)
+\end_layout
+
+\begin_layout Plain Layout
+
+    U_photo_global.append(U_photo)
+\end_layout
+
+\begin_layout Plain Layout
+
+    i_mes_global.append(i_mes)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+I_global = np.array(I_global)
+\end_layout
+
+\begin_layout Plain Layout
+
+U_photo_global = np.array(U_photo_global)
+\end_layout
+
+\begin_layout Plain Layout
+
+i_mes_global = np.array(i_mes_global)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+### FIRST PLOT ###
+\end_layout
+
+\begin_layout Plain Layout
+
+fig = plt.figure('Données brutes')
+\end_layout
+
+\begin_layout Plain Layout
+
+ax = fig.add_subplot(projection='3d')
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+for i in range(len(I_global)) :
+\end_layout
+
+\begin_layout Plain Layout
+
+    ax.plot(i_mes_global[i],U_photo_global[i],
+ I_global[i],
+ marker = '+',
+ markersize=10)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.title('Lien entre intensité,
+ tension et éclairement lumineux')
+\end_layout
+
+\begin_layout Plain Layout
+
+ax.set_xlabel('Intensité (A)')
+\end_layout
+
+\begin_layout Plain Layout
+
+ax.set_ylabel('Tension (V)')
+\end_layout
+
+\begin_layout Plain Layout
+
+ax.set_zlabel('Éclairement lumineux (lx)')
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.tight_layout()
+\end_layout
+
+\begin_layout Plain Layout
+
+ax.grid()
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+### LINEAR REGRESSION ###
+\end_layout
+
+\begin_layout Plain Layout
+
+R = []
+\end_layout
+
+\begin_layout Plain Layout
+
+R_square = []
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+for i in range(len(I_global)) :
+\end_layout
+
+\begin_layout Plain Layout
+
+    vec = np.polyfit(i_mes_global[i],
+ U_photo_global[i],1)
+\end_layout
+
+\begin_layout Plain Layout
+
+    R.append(vec[0])
+\end_layout
+
+\begin_layout Plain Layout
+
+    U_reg = i_mes_global[i]*vec[0]
+\end_layout
+
+\begin_layout Plain Layout
+
+    err_quadratique = np.sum((U_photo_global[i] - U_reg)**2)
+\end_layout
+
+\begin_layout Plain Layout
+
+    ecart_type = np.sum((U_photo_global[i] - np.mean(U_photo_global[i]))**2)
+\end_layout
+
+\begin_layout Plain Layout
+
+    R_square.append(1-err_quadratique/ecart_type)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+R = np.array(R)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+min_R_square = min(R_square)
+\end_layout
+
+\begin_layout Plain Layout
+
+min_R_square = round(min_R_square,3)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+fig = plt.figure('Régression linéaire 1')
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.plot(I_global,R,
+ marker='+',
+ linestyle='dotted',
+ markersize=10)
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.title(r'Lien entre éclairement lumineux et resistance,
+ $R^2 = $' + str(min_R_square))
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.xlabel('Éclairement lumineux (lx)')
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.ylabel(r'Resistance ($
+\backslash
+Omega$)')
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.tight_layout()
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.grid()
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+### LOI PHOTORESISTANCE ###
+\end_layout
+
+\begin_layout Plain Layout
+
+new_R = 1/R
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+vec = np.polyfit(I_global,new_R,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+I_lin = np.linspace(min(I_global),max(I_global),100)
+\end_layout
+
+\begin_layout Plain Layout
+
+reg = vec[0]*I_lin + vec[1]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+err_quadratique = np.sum((U_photo_global[i] - U_reg)**2)
+\end_layout
+
+\begin_layout Plain Layout
+
+ecart_type = np.sum((U_photo_global[i] - np.mean(U_photo_global[i]))**2)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+R_square = (1-err_quadratique/ecart_type)
+\end_layout
+
+\begin_layout Plain Layout
+
+R_square = round(R_square,4)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+fig = plt.figure('Régression linéaire 2')
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.plot(I_global,new_R,
+ marker='+',
+ linestyle='dotted',
+ markersize=10,
+ label='Mesures')
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.plot(I_lin,reg,
+ color='orange',
+ label='Régression')
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.title(r'Régression linéaire,
+ $R^2 = $' + str(R_square))
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.xlabel('Éclairement lumineux (lx)')
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.ylabel(r'1/R ($
+\backslash
+Omega^{-1}$)')
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.legend()
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.tight_layout()
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.grid()
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+R_reg = 1/reg
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+fig = plt.figure('Loi fonctionnement photorésistance')
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.plot(I_global,R,
+ marker='+',
+ linestyle='dotted',
+ markersize=10,
+ label='Mesures')
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.plot(I_lin,R_reg,
+ color='orange',
+ label='Régression')
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.title('Loi de fonctionnement de la photorésistance')
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.xlabel('Éclairement lumineux (lx)')
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.ylabel(r'Résistance ($
+\backslash
+Omega$)')
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.legend()
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.tight_layout()
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.grid()
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.show()
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
