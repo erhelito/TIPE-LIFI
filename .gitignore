@@ -8,10 +8,9 @@ TIPE.gan
 prog/emitter/.vscode
 prog/emitter/.micropico
 
-prog/computing/KNN
-
-prog/photoresistor
-prog/visualizer
+prog/codes raph
+prog/computing/bonjour.txt
+prog/computing/test.ipynb
 
 prog/receptor/.vscode
 prog/receptor/.micropico
