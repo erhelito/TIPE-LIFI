@@ -1,16 +1,17 @@
 datasheets
 ressources
 
+latex
+
 Etat recherches.pdf
 TIPE.gan
 TIPE.lyx
 TIPE.lyx~
 TIPE.pdf
 
-prog/emitter/__pycache__
 prog/emitter/.vscode
 prog/emitter/.micropico
-prog/test.ipynb
+
 prog/computing/KNN
 
 prog/photoresistor
@@ -18,7 +19,6 @@ prog/visualizer
 
 prog/receptor/.vscode
 prog/receptor/.micropico
-prog/receptor
 
 lifi elec/lifi-backups
 lifi elec/fp-info-cache
