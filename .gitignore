@@ -1,6 +1,5 @@
 datasheets
 ressources
-pics
 
 latex
 
@@ -21,6 +20,8 @@ lifi elec/lifi-backups
 lifi elec/fp-info-cache
 lifi elec/1.jpg
 lifi elec/2.jpg
+
+theory/laser/data
 
 3D/stand.20241109-112352.FCBak
 
